@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import './App.css';
-import Person from './components/Person';
+// import Person from './components/Person';
 import Book from './components/Book';
 
 // functional Component
@@ -38,13 +38,84 @@ import Book from './components/Book';
 //         );
 //   }
 // }
+
+// class App extends Component {
+//   render() {
+//       return (
+//           <div className="App">
+//               <h1> Book list</h1>
+//               <Book bookName="Himuer biye"  writer="Humayun Ahmed"/>
+//               <Book bookName="Noksi Kathar Mat"  writer="Polli kobi Josimoddin"/>
+//           </div>
+//         );
+//   }
+// }
+
+//state 
 class App extends Component {
+
+  state = {
+    books : [
+      {bookName : "Himuer biye", writer : "Humayun Ahmed"},
+      {bookName : "Noksi Kathar Mat", writer : "Polli kobi Josimoddin"},
+      {bookName : "1974", writer : "George Orwell"}
+    ]
+  }
+
+  changeStateProps = (newBookName) => {
+    this.setState({
+        books : [
+          {bookName : newBookName, writer : "Kazi Nozrul Islam"},
+          {bookName : "Noksi Kathar Mat", writer : "Polli kobi Josimoddin"},
+          {bookName : "1974", writer : "George Orwell"}
+        ]
+      });
+  }
+
+  changeInputStateProps = (event) => {
+    this.setState({
+      books : [
+        {bookName : event.target.value, writer : "Kazi Nozrul Islam"},
+        {bookName : "Noksi Kathar Mat", writer : "Polli kobi Josimoddin"},
+        {bookName : "1974", writer : "George Orwell"}
+      ]
+    });
+  }
+
   render() {
+
+		var style = {
+		border : "1ps solid",
+		backgroundColor : 'black',
+		borderRadius : '5px',
+		color: 'white',
+		width: '300px',
+		margin: '40px auto',
+		textAlign: 'center'
+		};
       return (
           <div className="App">
-              <h1> Book list</h1>
-              <Book bookName="Himuer biye"  writer="Humayun Ahmed"/>
-              <Book bookName="Noksi Kathar Mat"  writer="Poli kobi Josimoddin"/>
+              <h1 style={style}>Book list</h1>
+              <button onClick={() =>this.changeStateProps('Agni bina')}> Change State</button>
+
+              <input type="text"  onChange={this.changeInputStateProps} />
+
+              <Book 
+                bookName = {this.state.books[0].bookName} 
+                writer = {this.state.books[0].writer}
+                change ={this.changeInputStateProps}
+              />
+			   <br/> 
+              <Book 
+                bookName = {this.state.books[1].bookName} 
+                writer = {this.state.books[1].writer}
+              />
+			   <br/> 
+              <Book 
+                bookName = {this.state.books[2].bookName} 
+                writer = {this.state.books[2].writer}
+                change = {this.changeStateProps.bind(this, '1984')}
+              />
           </div>
         );
   }

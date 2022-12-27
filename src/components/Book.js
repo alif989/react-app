@@ -1,11 +1,18 @@
 import React from 'react';
+import '../StyleSheet/Book.css'
 
-const  Book = poprs => {
-    console.log(poprs);
+const  Book = props => {
     return (
-        <div>
-            <h1>Book Name: {poprs.bookName} & Writer : {poprs.writer}</h1> 
+        <div className='book'>
+        
+            <h2 className='content' onClick={props.change}>Book Name: {props.bookName}</h2> 
+            <h3>Writer : {props.writer}</h3>
+            
+            <input type="text"  onChange={props.change} />
+            <br/>
+            <br/>
         </div>
+        
     );
 }
 
