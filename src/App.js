@@ -65,9 +65,9 @@ class App extends Component {
   changeStateProps = (newBookName) => {
     this.setState({
         books : [
-          {bookName : newBookName, writer : "Kazi Nozrul Islam"},
-          {bookName : "Noksi Kathar Mat", writer : "Polli kobi Josimoddin"},
-          {bookName : "1974", writer : "George Orwell"}
+          {bookName : newBookName, writer : "Kazi Nozrul Islam11"},
+          {bookName : "Noksi Kathar Matee", writer : "Polli kobi Josimoddinee"},
+          {bookName : "1974eee", writer : "George Orwellee"}
         ]
       });
   }
@@ -85,38 +85,39 @@ class App extends Component {
   render() {
 
 		var style = {
-		border : "1ps solid",
-		backgroundColor : 'black',
-		borderRadius : '5px',
-		color: 'white',
-		width: '300px',
-		margin: '40px auto',
-		textAlign: 'center'
+			border : "1ps solid",
+			backgroundColor : 'black',
+			borderRadius : '5px',
+			color: 'white',
+			width: '300px',
+			margin: '40px auto',
+			textAlign: 'center'
 		};
+		
       return (
-          <div className="App">
-              <h1 style={style}>Book list</h1>
-              <button onClick={() =>this.changeStateProps('Agni bina')}> Change State</button>
+          	<div className="App">
+              	<h1 style={style}>Book list</h1>
+              	<button onClick={() =>this.changeStateProps('Agni bina')}> Change State</button>
 
-              <input type="text"  onChange={this.changeInputStateProps} />
+              	<input type="text"  onChange={this.changeInputStateProps} />
 
-              <Book 
-                bookName = {this.state.books[0].bookName} 
-                writer = {this.state.books[0].writer}
-                change ={this.changeInputStateProps}
-              />
-			   <br/> 
-              <Book 
-                bookName = {this.state.books[1].bookName} 
-                writer = {this.state.books[1].writer}
-              />
-			   <br/> 
-              <Book 
-                bookName = {this.state.books[2].bookName} 
-                writer = {this.state.books[2].writer}
-                change = {this.changeStateProps.bind(this, '1984')}
-              />
-          </div>
+				<Book 
+					bookName = {this.state.books[0].bookName} 
+					writer = {this.state.books[0].writer}
+					change ={this.changeInputStateProps}
+				/>
+			    <br/> 
+				<Book 
+					bookName = {this.state.books[1].bookName} 
+					writer = {this.state.books[1].writer}
+				/>
+			    <br/> 
+				<Book 
+					bookName = {this.state.books[2].bookName} 
+					writer = {this.state.books[2].writer}
+					change = {this.changeStateProps.bind(this, '1984')}
+				/>
+          	</div>
         );
   }
 }
