@@ -1,5 +1,5 @@
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 // static componet function
 // function Person() {
@@ -27,16 +27,16 @@ import React, {Component} from 'react';
 // dynamic class componet function
 
 class Person extends Component {
-     constructor(props) {
+        constructor(props) {
         super(props);
-     }
+    }
     render() {
-        return(
+        return (
             <div>
-                <h1> 
-                    Name : {this.props.name} and Age : {this.props.age} <br/>
-                    Extra Info : {  this.props.children }
-                 </h1>
+                <h1>
+                    Name : {this.props.name} and Age : {this.props.age} <br />
+                    Extra Info : {this.props.children}
+                </h1>
             </div>
         );
     }
