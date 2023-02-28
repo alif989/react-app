@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 import Book from './Book';
-
+import bookList from '../assets/books';
 class MainComponent extends Component {
     
     state = {
-		books: [
-			{ bookName: "Himuer biye", writer: "Humayun Ahmed" },
-			{ bookName: "Noksi Kathar Mat", writer: "Polli kobi Josimoddin" },
-			{ bookName: "1974", writer: "George Orwell" }
-		],
+		books: bookList,
 		showBooks:true
 	}
 	
