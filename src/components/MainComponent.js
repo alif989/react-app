@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Book from './Book';
+
 import bookList from '../assets/books';
+import BookLists from './lists/BookList';
 class MainComponent extends Component {
     
     state = {
@@ -32,15 +33,6 @@ class MainComponent extends Component {
 		})
 	}
 	
-	// changeInputStateProps = (event) => {
-	// 	this.setState({
-	// 		books: [
-	// 			{ bookName: event.target.value, writer: "Kazi Nozrul Islam" },
-	// 			{ bookName: "Noksi Kathar Mat", writer: "Polli kobi Josimoddin" },
-	// 			{ bookName: "1974", writer: "George Orwell" }
-	// 		]
-	// 	});
-	// }
 	changeInputStateProps = (event,index) => {
 		
 		const book = { ...this.state.books[index] };
@@ -66,45 +58,18 @@ class MainComponent extends Component {
 		
 		let books = null;
 		if(this.state.showBooks) {
-			 books = this.state.books.map((book, index)=> {
-				return(
-					<Book 
-						bookName = {book.bookName}
-						writer = {book.writer}
-						delete = {() => this.deleteBookState(index)}
-						key = {index}
-						change = {(event) => this.changeInputStateProps(event,index)}
-					/>
-				);
-				
-			});
+			books = <BookLists 
+				books = {this.state.books} 
+			  	deleteBookState = {this.deleteBookState}
+			  	changeInputStateProps = {this.changeInputStateProps}
+			/>
 		}
 		
 
 		return (
 			<div className="App">
 				<h1 style={style}>Book list</h1>
-				{/* <button onClick={() => this.changeStateProps('Agni bina')}> Change State</button> */}
 				<button onClick={() => this.toggoleBooks()}>Toggle Books</button>
-
-				{/* <input type="text" onChange={this.changeInputStateProps} /> */}
-
-				{/* <Book
-					bookName={this.state.books[0].bookName}
-					writer={this.state.books[0].writer}
-					change={this.changeInputStateProps}
-				/>
-				<br />
-				<Book
-					bookName={this.state.books[1].bookName}
-					writer={this.state.books[1].writer}
-				/>
-				<br />
-				<Book
-					bookName={this.state.books[2].bookName}
-					writer={this.state.books[2].writer}
-					change={this.changeStateProps.bind(this, '1984')}
-				/> */}
 				
 				{ books }
 			</div>
